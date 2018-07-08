@@ -1,0 +1,30 @@
+#include <iostream>
+
+//power of a,b module m
+using namespace std;
+
+
+int power(int a,int b,int m){
+ 
+    int i=0;
+    int mul = 1;
+    for(i=0;i<b;i++){
+        mul = (a%m * mul%m)%m;   
+    }
+    
+    return mul;
+}
+
+int main(){
+    
+    int a,b,m;
+    
+    scanf("%d %d %d",&a,&b,&m);
+    
+    int ans = power(a,b,m);
+    
+    printf("%d",ans);
+    
+    
+    return 0;
+}
