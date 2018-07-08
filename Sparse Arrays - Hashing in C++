@@ -1,0 +1,51 @@
+#include <iostream>
+
+using namespace std;
+
+
+int sum(char *temp){
+    int tempSum,tempValue,k,x;
+    
+    x =1;
+    k =0;
+    tempSum =0;
+    //cout<<temp;
+    while(*temp != '\0'){
+    
+        tempValue = temp[k]*(x | (temp[k] | x+1));
+        tempSum += tempValue;
+        
+        //cout<<tempValue<<tempSum<<"\n";
+        temp++;
+        x++;
+    }
+    
+    return tempSum;
+}
+
+int main(){
+    
+    int *p = new int[1000000];
+    int i,n,q,k,tempSum,tempValue;
+    char *temp = new char[21];
+    cin>>n;
+    
+    for(i=0;i<n;i++){
+        cin>>temp;
+        temp = temp+'\0';
+        tempSum = sum(temp);
+        //cout<<temp<<tempSum<<"\n";
+        p[tempSum] +=1;
+    }
+    cin>>q;
+    
+    for(i=0;i<q;i++){
+        cin>>temp;
+        temp = temp+'\0';
+        tempSum = sum(temp);
+        //cout<<temp<<tempSum<<"\n";
+        cout<<p[tempSum]<<"\n";
+    }
+    
+    return 0;
+}
